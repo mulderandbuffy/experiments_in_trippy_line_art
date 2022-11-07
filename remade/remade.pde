@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 float x;
 float y;
 float direction = 0;
@@ -7,6 +10,8 @@ float innerAngle;
 float shapeSize;
 float biggen;
 
+String folder = "output/";
+DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy-HH-mm-ss-ms");
 
 int noColours = 1+ int(random(10));
 Colour[] colours;
@@ -36,6 +41,7 @@ class Colour {
   }
 
 void setup() {
+  noLoop();
   size(1920, 1080);
   background(0);
   strokeWeight(1+ random(6));
@@ -49,10 +55,10 @@ void setup() {
 }
 
 void draw() {
-  if (y < width+height){
+  while (y < width+height){
   
   
-    x = width/2;
+  x = width/2;
   y = height/2;
   
   for (int i=0; i<noColours; i++){
@@ -72,7 +78,12 @@ void draw() {
   rotateTurtle(outerAngle);
   forward(shapeSize);
   shapeSize+= biggen;
-}}
+}
+
+String now = LocalDateTime.now().format(timeFormat);
+save(folder + now + ".png");
+System.out.println(folder + now);
+}
 
 void forward(float amount) {
   
