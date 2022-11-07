@@ -22,11 +22,13 @@ class Colour {
   float r;
   float g;
   float b;
+  float a;
   
   Colour(){ //creates a random rgb colour
     this.r = random(256);
     this.g = random(256);
     this.b = random(256);
+    this.a = random(256);
   }
 }
 
@@ -64,7 +66,7 @@ void draw() {
   for (int i=0; i<noColours; i++){
   Colour colour = colours[colourIndex];
   
-  stroke(colour.r, colour.g, colour.b); 
+  stroke(colour.r, colour.g, colour.b, colour.a); 
     
   forward(shapeSize);
   rotateTurtle(innerAngle);
